@@ -1,23 +1,30 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
 function App() {
+  const [button1Clicked, setButton1Clicked] = useState(false);
+  const [button2Clicked, setButton2Clicked] = useState(false);
+
+  const handleButtonClick1 = () => {
+    setButton1Clicked(true);
+    setButton2Clicked(false);
+  };
+
+  const handleButtonClick2 = () => {
+    setButton1Clicked(false);
+    setButton2Clicked(true);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button onClick={handleButtonClick1}>
+        Button 1
+      </button>
+      <button onClick={handleButtonClick2}>
+        Button 2
+      </button>
+      {button1Clicked && <p>Button 1 was clicked!</p>}
+      {button2Clicked && <p>Button 2 was clicked!</p>}
     </div>
   );
 }
